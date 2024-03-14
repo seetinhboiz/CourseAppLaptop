@@ -35,7 +35,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'courses.apps.CoursesConfig'
+    'courses.apps.CoursesConfig',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -51,6 +53,8 @@ MIDDLEWARE = [
 import pymysql
 
 pymysql.install_as_MySQLdb()
+
+CKEDITOR_UPLOAD_PATH = "static/courses/"
 
 ROOT_URLCONF = 'courseapp.urls'
 
@@ -80,12 +84,15 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'coursedb',
         'USER': 'root',
-        'PASSWORD': 'nghianek123',
+        # 'PASSWORD': 'nghianek123',
+        'PASSWORD': 'Admin@123',
         'HOST': '',
     }
 }
 
 AUTH_USER_MODEL = 'courses.User'
+
+MEDIA_ROOT = '%s/courses/static/' % BASE_DIR
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
