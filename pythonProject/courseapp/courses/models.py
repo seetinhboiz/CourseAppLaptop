@@ -1,3 +1,4 @@
+from ckeditor.fields import RichTextField
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
@@ -24,6 +25,6 @@ class Category(BaseModel):
 
 class Course(BaseModel):
     subject = models.CharField(max_length=255, null=False)
-    description = models.TextField()
+    description = RichTextField()
     image = models.ImageField(upload_to='courses/%Y/%m/')
-    category = models.ForeignKey(Category, on_delete=models.PROTECT)
+    category = models.ForeignKey(Category, on_delete=models.PROTECT, related_query_name="courses")

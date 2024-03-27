@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'courses.apps.CoursesConfig',
     'ckeditor',
     'ckeditor_uploader',
+    "debug_toolbar",
 ]
 
 MIDDLEWARE = [
@@ -48,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 import pymysql
@@ -61,7 +63,7 @@ ROOT_URLCONF = 'courseapp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -84,11 +86,15 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'coursedb',
         'USER': 'root',
-        # 'PASSWORD': 'nghianek123',
-        'PASSWORD': 'Admin@123',
+        'PASSWORD': 'nghianek123',
+        # 'PASSWORD': 'Admin@123',
         'HOST': '',
     }
 }
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
 
 AUTH_USER_MODEL = 'courses.User'
 
