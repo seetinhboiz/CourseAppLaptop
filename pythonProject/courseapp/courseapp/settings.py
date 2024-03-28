@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     "debug_toolbar",
+    'rest_framework',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -55,6 +57,14 @@ MIDDLEWARE = [
 import pymysql
 
 pymysql.install_as_MySQLdb()
+
+import cloudinary
+
+cloudinary.config(
+    cloud_name="dva62xqbp",
+    api_key="588385898538365",
+    api_secret="7pKOZlFCRcC0Sn03pEaM29c4LUI"
+)
 
 CKEDITOR_UPLOAD_PATH = "static/courses/"
 
@@ -86,8 +96,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'coursedb',
         'USER': 'root',
-        'PASSWORD': 'nghianek123',
-        # 'PASSWORD': 'Admin@123',
+        # 'PASSWORD': 'nghianek123',
+        'PASSWORD': 'Admin@123',
         'HOST': '',
     }
 }
